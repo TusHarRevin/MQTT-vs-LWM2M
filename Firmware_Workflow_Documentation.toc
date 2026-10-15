@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Executive Summary and Project Scope}{3}{section.1}%
+\contentsline {section}{\numberline {2}Functional Architecture and System Diagrams}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}PC Simulation Architecture}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Embedded Target Architecture (STM32 Nucleo + EC200U)}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Firmware Layering and Modularity}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Hardware Architecture and Interface Specifications}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Electrical Wiring and Pinout Mapping}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Microcontroller Clocks and Peripherals}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Memory Allocations and Static Budgets}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Modem Interface and AT State Machine}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Modem Bring-Up Sequence}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}AT Socket Lifecycle (Direct Push Mode)}{7}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Protocol Workflows and Sequence Diagrams}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}MQTT End-to-End Session Workflow}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}LwM2M End-to-End Session Workflow}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Simulated Over-The-Air (OTA) Update Workflow}{7}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Comprehensive Parameter Catalog}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Build-Time CMake and Preprocessor Definitions}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Hardware Configuration Defines (\texttt {hw\_config.h})}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Command-Line and Dashboard Runtime Options}{9}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Step-by-Step Operational Workflows}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}PC Simulation Workflow}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}STM32 Target Hardware Workflow}{11}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Measurement Methodology and Experimental Results}{12}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Latency Calculation Formulas}{12}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Experimental Performance Comparison}{12}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Key Technical Conclusions}{12}{subsection.8.3}%

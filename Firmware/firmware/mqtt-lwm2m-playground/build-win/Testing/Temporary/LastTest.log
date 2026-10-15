@@ -1,0 +1,83 @@
+Start testing: Oct 07 17:03 India Standard Time
+----------------------------------------------------------
+1/5 Testing: sensor
+1/5 Test: sensor
+Command: "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/tests/test_sensor.exe"
+Directory: R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win
+"sensor" start time: Oct 07 17:03 India Standard Time
+Output:
+----------------------------------------------------------
+all checks passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"sensor" end time: Oct 07 17:03 India Standard Time
+"sensor" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: bench
+2/5 Test: bench
+Command: "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/tests/test_bench.exe"
+Directory: R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win
+"bench" start time: Oct 07 17:03 India Standard Time
+Output:
+----------------------------------------------------------
+all checks passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"bench" end time: Oct 07 17:03 India Standard Time
+"bench" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: telemetry
+3/5 Test: telemetry
+Command: "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/tests/test_telemetry.exe"
+Directory: R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win
+"telemetry" start time: Oct 07 17:03 India Standard Time
+Output:
+----------------------------------------------------------
+all checks passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"telemetry" end time: Oct 07 17:03 India Standard Time
+"telemetry" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: netsim
+4/5 Test: netsim
+Command: "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/tests/test_netsim.exe"
+Directory: R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win
+"netsim" start time: Oct 07 17:03 India Standard Time
+Output:
+----------------------------------------------------------
+all checks passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"netsim" end time: Oct 07 17:03 India Standard Time
+"netsim" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: coap_trace
+5/5 Test: coap_trace
+Command: "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/tests/test_coap_trace.exe"
+Directory: R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win
+"coap_trace" start time: Oct 07 17:03 India Standard Time
+Output:
+----------------------------------------------------------
+all checks passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"coap_trace" end time: Oct 07 17:03 India Standard Time
+"coap_trace" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 07 17:03 India Standard Time

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate-complete.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-build.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-configure.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-download.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-install.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-mkdir.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-patch.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-test.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"wakaama-populate"
+		],
+		"name" : "wakaama-populate"
+	}
+}

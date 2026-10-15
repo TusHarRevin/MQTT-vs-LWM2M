@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/CMakeFiles/paho-populate"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/CMakeFiles/paho-populate.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/CMakeFiles/paho-populate-complete.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-build.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-configure.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-download.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-install.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-mkdir.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-patch.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-test.rule"
+		},
+		{
+			"file" : "R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/paho-subbuild/paho-populate-prefix/src/paho-populate-stamp/paho-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"paho-populate"
+		],
+		"name" : "paho-populate"
+	}
+}

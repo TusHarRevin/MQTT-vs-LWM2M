@@ -1,0 +1,3 @@
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/edit_cache.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/rebuild_cache.dir

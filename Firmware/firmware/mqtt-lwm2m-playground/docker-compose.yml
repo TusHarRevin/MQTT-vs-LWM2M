@@ -1,0 +1,20 @@
+# Starts both servers:   docker compose up
+#   Mosquitto  1883 (MQTT)  8883 (MQTT over TLS)
+#   Leshan     8080 (web UI + REST)  5683/udp (CoAP)  5684/udp (CoAP over DTLS)
+# Then build and run the lab/devices on the host as usual.
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+    volumes:
+      - ./servers/mosquitto/mosquitto.docker.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./servers/mosquitto/certs:/mosquitto/config/certs:ro
+
+  leshan:
+    build: ./servers/leshan
+    ports:
+      - "8080:8080"
+      - "5683:5683/udp"
+      - "5684:5684/udp"

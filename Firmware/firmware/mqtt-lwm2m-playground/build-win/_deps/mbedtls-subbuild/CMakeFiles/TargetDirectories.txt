@@ -1,0 +1,3 @@
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/mbedtls-subbuild/CMakeFiles/mbedtls-populate.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/mbedtls-subbuild/CMakeFiles/edit_cache.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/mbedtls-subbuild/CMakeFiles/rebuild_cache.dir

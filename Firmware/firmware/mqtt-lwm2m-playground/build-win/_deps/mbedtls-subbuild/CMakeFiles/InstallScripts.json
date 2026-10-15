@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/mbedtls-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

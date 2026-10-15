@@ -1,0 +1,8 @@
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/stm32_hal.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/mbedtls_stm32.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/paho_mqttpacket.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/wakaama_client.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/pg_firmware.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/flash.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/edit_cache.dir
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-stm32/CMakeFiles/rebuild_cache.dir

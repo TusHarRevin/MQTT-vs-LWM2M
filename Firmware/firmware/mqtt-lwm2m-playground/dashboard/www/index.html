@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IoT Protocol Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">⇄</span>
+    <div>
+      <h1>MQTT vs LwM2M Playground</h1>
+      <p class="sub">Embedded-C simulated devices · real Mosquitto · real Leshan</p>
+    </div>
+  </div>
+  <div class="servers">
+    <label class="target" title="Where START runs the MQTT / LwM2M device">Device
+      <select id="target"><option value="pc">PC simulation</option><option value="hw">STM32 + EC200U</option></select>
+    </label>
+    <span class="pill" id="pill-hw" hidden><span class="dot"></span>Board <b>…</b></span>
+    <span class="pill" id="pill-broker"><span class="dot"></span>Mosquitto <b>…</b></span>
+    <span class="pill" id="pill-leshan"><span class="dot"></span>Leshan <b>…</b></span>
+    <span class="pill" id="pill-lab"><span class="dot"></span>Lab <b>…</b></span>
+    <button class="ghost" id="theme" title="Toggle light/dark">◐</button>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-tab="mqtt" class="active">MQTT</button>
+  <button role="tab" data-tab="lwm2m">LwM2M</button>
+  <button role="tab" data-tab="compare">MQTT vs LwM2M</button>
+  <button role="tab" data-tab="ota">OTA <small>simulated</small></button>
+  <button role="tab" data-tab="guide">Guide</button>
+</nav>
+
+<main>
+<!-- ===================================================== MQTT -->
+<section class="tab" id="tab-mqtt">
+  <div class="grid3">
+    <div class="card controls">
+      <h2>Device controls</h2>
+      <div class="field"><label>MQTT QoS</label>
+        <div class="seg" id="m-qos">
+          <button data-v="0">QoS 0</button><button data-v="1" class="on">QoS 1</button><button data-v="2">QoS 2</button>
+        </div>
+      </div>
+      <div class="field"><label for="m-interval">Message interval</label>
+        <select id="m-interval"><option value="200ms">0.2 s</option><option value="500ms">0.5 s</option><option value="1s" selected>1 s</option><option value="2s">2 s</option><option value="5s">5 s</option><option value="10s">10 s</option></select></div>
+      <div class="field"><label for="m-count">Number of messages</label>
+        <select id="m-count"><option value="0">∞ (until stopped)</option><option value="10">10</option><option value="50">50</option><option value="100" selected>100</option><option value="500">500</option></select></div>
+      <div class="field"><label for="m-payload">Payload size</label>
+        <select id="m-payload"><option value="0" selected>natural (~120 B)</option><option value="256">256 B</option><option value="512">512 B</option><option value="1024">1 KiB</option><option value="4096">4 KiB</option><option value="16384">16 KiB</option></select></div>
+      <div class="field"><label>Security</label>
+        <div class="seg" id="m-sec"><button data-v="0" class="on">OFF · TCP 1883</button><button data-v="1">ON · TLS 8883</button></div>
+      </div>
+      <div class="netbox" data-net="m"></div>
+      <div class="btnrow">
+        <button class="primary" id="m-start">▶ START</button>
+        <button id="m-stop">■ STOP</button>
+        <button id="m-reset" title="Clear log and counters">↺ RESET</button>
+      </div>
+      <div class="btnrow">
+        <button class="small" id="m-pubnow" title="Ask the device to publish immediately">Publish now</button>
+        <button class="small" id="m-cmd" title="Publish 'interval=2000' to the device's cmd topic via the broker - shows the SUBSCRIBE path">Send cmd via broker</button>
+      </div>
+      <p class="hint" id="m-hint"></p>
+    </div>
+
+    <div class="card">
+      <h2>Message flow <span class="muted" id="m-flowtitle"></span></h2>
+      <div class="seq" id="m-seq" data-left="DEVICE" data-right="BROKER"></div>
+      <details class="explain" open>
+        <summary>What the selected QoS does</summary>
+        <pre id="m-qosflow"></pre>
+      </details>
+    </div>
+
+    <div class="col">
+      <div class="card server">
+        <h2>MQTT broker</h2>
+        <dl class="kv" id="m-broker"></dl>
+      </div>
+      <div class="card">
+        <h2>Simulated device</h2>
+        <dl class="kv" id="m-device"></dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Live latency <span class="muted">per message, this run</span></h2>
+    <div class="chart" id="m-live"></div>
+  </div>
+</section>
+
+<!-- ===================================================== LwM2M -->
+<section class="tab" id="tab-lwm2m" hidden>
+  <div class="grid3">
+    <div class="card controls">
+      <h2>Device controls</h2>
+      <div class="field"><label for="l-interval">Sample interval</label>
+        <select id="l-interval"><option value="200ms">0.2 s</option><option value="500ms">0.5 s</option><option value="1s" selected>1 s</option><option value="2s">2 s</option><option value="5s">5 s</option><option value="10s">10 s</option></select></div>
+      <div class="field"><label for="l-count">Number of notifications</label>
+        <select id="l-count"><option value="0">∞ (until stopped)</option><option value="10">10</option><option value="50">50</option><option value="100" selected>100</option><option value="500">500</option></select></div>
+      <div class="field"><label for="l-payload">Payload size <span class="muted">(/19/0/0)</span></label>
+        <select id="l-payload"><option value="0" selected>natural · observe temperature</option><option value="256">256 B · observe /19/0/0</option><option value="512">512 B · observe /19/0/0</option><option value="1024">1 KiB · observe /19/0/0</option></select></div>
+      <div class="field"><label>Notifications</label>
+        <div class="seg" id="l-notify"><button data-v="con" class="on">CON (acked)</button><button data-v="non">NON (Wakaama default)</button></div>
+      </div>
+      <div class="field"><label>Security</label>
+        <div class="seg" id="l-sec"><button data-v="0" class="on">OFF · CoAP 5683</button><button data-v="1">ON · DTLS-PSK 5684</button></div>
+      </div>
+      <div class="netbox" data-net="l"></div>
+      <div class="btnrow">
+        <button class="primary" id="l-start">▶ START</button>
+        <button id="l-stop">■ STOP</button>
+        <button id="l-reset">↺ RESET</button>
+      </div>
+      <label class="check"><input type="checkbox" id="l-autoobs" checked> Auto-OBSERVE after REGISTER (needed for benchmarks)</label>
+      <p class="hint" id="l-hint"></p>
+    </div>
+
+    <div class="card">
+      <h2>Transaction flow</h2>
+      <div class="ops">
+        <span class="muted">Device:</span>
+        <button class="small" data-op="register">Register</button>
+        <button class="small" data-op="deregister">Deregister</button>
+        <button class="small" data-op="notify">Notify</button>
+        <span class="muted">Server:</span>
+        <button class="small" data-op="read">Read</button>
+        <button class="small" data-op="write">Write</button>
+        <input type="text" id="l-wval" placeholder="value to write" style="width:130px" aria-label="Value for Write">
+        <button class="small" data-op="observe">Observe</button>
+        <button class="small" data-op="cancel">Cancel observe</button>
+        <button class="small" data-op="execute">Execute</button>
+      </div>
+      <div class="seq" id="l-seq" data-left="DEVICE" data-right="SERVER"></div>
+      <p class="hint" id="l-ophint">Select a resource below, then pick an operation.</p>
+    </div>
+
+    <div class="col">
+      <div class="card server">
+        <h2>LwM2M server (Leshan)</h2>
+        <dl class="kv" id="l-server"></dl>
+      </div>
+      <div class="card">
+        <h2>Simulated device</h2>
+        <dl class="kv" id="l-device"></dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Device resources <span class="muted">click to select · values as last read/notified</span></h2>
+    <table class="res" id="l-res"><thead><tr><th>Path</th><th>Name</th><th>Value</th><th>Ops</th><th>Observed</th></tr></thead><tbody></tbody></table>
+  </div>
+  <div class="card">
+    <h2>Live latency <span class="muted">CON → ACK per notification</span></h2>
+    <div class="chart" id="l-live"></div>
+  </div>
+</section>
+
+<!-- ===================================================== Compare -->
+<section class="tab" id="tab-compare" hidden>
+  <div class="grid2">
+    <div class="card">
+      <h2>Side by side <span class="muted">latest completed run of each</span></h2>
+      <table class="cmp" id="cmp-table"></table>
+      <p class="hint">Only measured values are shown. Change the network or security, run again, and the table and charts update.</p>
+    </div>
+    <div class="card">
+      <h2>Experiments</h2>
+      <p class="muted">Each runs real devices against the real servers, one after another. Settings come from the MQTT/LwM2M tabs (QoS, security, payload).</p>
+      <div class="btnrow wrap">
+        <button class="primary" id="x-bench">Benchmark: 100 + 100</button>
+        <button id="x-loss">Sweep packet loss</button>
+        <button id="x-lat">Sweep network latency</button>
+        <button id="x-payload">Sweep payload size</button>
+        <button id="x-sec">Security OFF vs ON</button>
+        <button id="x-cancel">Cancel</button>
+      </div>
+      <div class="progress"><div id="x-bar"></div></div>
+      <p id="x-status" class="muted">Idle.</p>
+      <div class="btnrow">
+        <button class="small" id="runs-reset" title="Archive results/runs.jsonl and start fresh">Reset comparison</button>
+        <a class="small linkbtn" href="/api/runs" target="_blank">runs JSON</a>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h2>Latency: MQTT vs LwM2M</h2><div class="chart" id="c-lat"></div></div>
+    <div class="card"><h2>Packet loss → success rate</h2><div class="chart" id="c-loss"></div></div>
+    <div class="card"><h2>Network latency → protocol latency <span class="muted">median</span></h2><div class="chart" id="c-netlat"></div></div>
+    <div class="card"><h2>Payload size → bytes per message</h2><div class="chart" id="c-payload"></div></div>
+    <div class="card"><h2>Security OFF vs ON <span class="muted">time to ready</span></h2><div class="chart" id="c-sec"></div></div>
+    <div class="card"><h2>Security OFF vs ON <span class="muted">wire bytes per message</span></h2><div class="chart" id="c-secb"></div></div>
+  </div>
+  <div class="card">
+    <h2>All runs</h2>
+    <div class="tablewrap"><table class="runs" id="runs"></table></div>
+  </div>
+</section>
+
+<!-- ===================================================== OTA -->
+<section class="tab" id="tab-ota" hidden>
+  <div class="banner">SIMULATED OTA — a learning exercise. It downloads, stores and verifies a file; it does <b>not</b> model STM32 flash, bootloaders or rollback.</div>
+  <div class="grid3">
+    <div class="card controls">
+      <h2>Update</h2>
+      <div class="field"><label for="o-image">Firmware image</label>
+        <select id="o-image">
+          <option value="firmware_v2.bin" selected>firmware_v2.bin · 256 KiB</option>
+          <option value="firmware_v1.bin">firmware_v1.bin · 64 KiB</option>
+          <option value="fw_32k.bin">synthetic 32 KiB</option>
+          <option value="fw_128k.bin">synthetic 128 KiB</option>
+          <option value="fw_512k.bin">synthetic 512 KiB</option>
+          <option value="fw_1024k.bin">synthetic 1 MiB</option>
+        </select></div>
+      <div class="field"><label for="o-chunk">Chunk (block) size</label>
+        <select id="o-chunk"><option value="256">256 B</option><option value="512">512 B</option><option value="1024" selected>1 KiB</option><option value="4096">4 KiB</option><option value="16384">16 KiB</option></select></div>
+      <div class="netbox" data-net="o"></div>
+      <div class="btnrow">
+        <button class="primary" id="o-start">▶ START OTA</button>
+        <button id="o-int">✕ INTERRUPT OTA</button>
+        <button id="o-reset">↺ RESET</button>
+      </div>
+      <button class="small" id="o-sweep">Sweep firmware sizes</button>
+    </div>
+    <div class="card">
+      <h2>Update flow</h2>
+      <ol class="otaflow" id="o-flow">
+        <li data-step="available"><b>Server</b> → firmware available</li>
+        <li data-step="download"><b>Device</b> → download in chunks</li>
+        <li data-step="store"><b>Storage</b> → write slot B</li>
+        <li data-step="verify"><b>Verify</b> → SHA-256 vs manifest</li>
+        <li data-step="done"><b>New firmware</b> → activate</li>
+      </ol>
+      <div class="progress big"><div id="o-bar"></div><span id="o-pct">0 %</span></div>
+      <dl class="kv" id="o-stats"></dl>
+    </div>
+    <div class="card"><h2>Firmware size → OTA time</h2><div class="chart" id="c-ota"></div></div>
+  </div>
+</section>
+
+<!-- ===================================================== Guide -->
+<section class="tab" id="tab-guide" hidden>
+  <div class="card prose">
+    <h2>Five-minute tour</h2>
+    <ol>
+      <li><b>MQTT tab</b> → START. Watch <code>CONNECT → CONNACK → SUBSCRIBE → SUBACK → PUBLISH → PUBACK</code>. Click any line in the event log to inspect the raw bytes.</li>
+      <li>Switch QoS to 2 and START again: <code>PUBLISH → PUBREC → PUBREL → PUBCOMP</code>.</li>
+      <li><b>LwM2M tab</b> → START. Watch <code>REGISTER → REGISTER RESPONSE</code>; the dashboard then OBSERVEs temperature and you see <code>NOTIFY → ACK</code> every interval. Select a resource and try Read / Write / Execute.</li>
+      <li>Set <b>Packet loss = 5 %</b> and run both again. On the <b>MQTT vs LwM2M</b> tab compare latency and success.</li>
+      <li>Turn <b>Security ON</b> and run again: handshake time and bytes appear.</li>
+      <li><b>OTA tab</b> → START OTA, then try INTERRUPT.</li>
+    </ol>
+    <h2>How latency is measured</h2>
+    <ul>
+      <li><b>MQTT QoS 1</b>: PUBLISH → PUBACK. <b>QoS 2</b>: PUBLISH → PUBCOMP. <b>QoS 0</b> has no ack: the device sends a PINGREQ right after the PUBLISH; the broker reads the TCP stream in order, so its PINGRESP proves it received the PUBLISH.</li>
+      <li><b>LwM2M</b>: CON → ACK. Wakaama sends notifications NON by default; the playground marks them CON (allowed by RFC 7641) and retransmits like CoAP would, so delivery and latency can be measured. Choose NON to see the default behaviour (latency then shows "not measured").</li>
+      <li>Percentiles use the nearest-rank method over successful messages. Failed messages count against success rate and never get a latency.</li>
+    </ul>
+    <h2>Docs</h2>
+    <p><a href="/docs/mqtt.md" target="_blank">mqtt.md</a> · <a href="/docs/lwm2m.md" target="_blank">lwm2m.md</a> · <a href="/docs/security.md" target="_blank">security.md</a> · <a href="/docs/benchmarking.md" target="_blank">benchmarking.md</a> · <a href="/docs/ota.md" target="_blank">ota.md</a> · <a href="/docs/server.md" target="_blank">server.md</a> · <a href="/docs/troubleshooting.md" target="_blank">troubleshooting.md</a></p>
+  </div>
+</section>
+
+<!-- ===================================================== Event log + inspector -->
+<section class="bottom">
+  <div class="card log">
+    <div class="logbar">
+      <h2>Event log</h2>
+      <div class="seg small" id="log-filter">
+        <button data-v="all" class="on">All</button><button data-v="MQTT">MQTT</button><button data-v="LWM2M">LwM2M</button><button data-v="OTA">OTA</button><button data-v="SERVER">Servers</button>
+      </div>
+      <label class="check"><input type="checkbox" id="log-follow" checked> follow</label>
+    </div>
+    <div id="log" class="logbody" tabindex="0" aria-live="off"></div>
+  </div>
+  <div class="card inspector">
+    <h2>Message inspector</h2>
+    <div id="insp"><p class="muted">Click an event to inspect it.</p></div>
+  </div>
+</section>
+</main>
+
+<div id="tip" class="tip" hidden></div>
+<script src="charts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

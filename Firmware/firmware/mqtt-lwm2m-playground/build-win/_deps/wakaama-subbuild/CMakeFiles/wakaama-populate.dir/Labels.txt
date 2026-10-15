@@ -1,0 +1,14 @@
+# Target labels
+ wakaama-populate
+# Source files and their labels
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/CMakeFiles/wakaama-populate-complete.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-build.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-configure.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-download.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-install.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-mkdir.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-patch.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-test.rule
+R:/Revin/Firmware/firmware/mqtt-lwm2m-playground/build-win/_deps/wakaama-subbuild/wakaama-populate-prefix/src/wakaama-populate-stamp/wakaama-populate-update.rule

@@ -1,0 +1,6 @@
+sensor 3 0.00284253
+bench 3 0.0017806
+telemetry 3 0.00172697
+netsim 3 0.00192987
+coap_trace 3 0.00180433
+---
